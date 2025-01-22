@@ -1,4 +1,4 @@
 #!/bin/bash
 #
-# This script will archive logs 
-# On a set schedule by compressing them and storing them in a new directory
+# This script archives logs on a set schedule 
+# By compressing them and storing them in a new directory
