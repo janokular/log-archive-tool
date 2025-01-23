@@ -3,8 +3,11 @@
 # This script archives logs
 # By compressing them and storing them in a new directory
 
-ARCHIVE_DIR='archive/'
 LOG_DIR='/var/log/'
+ARCHIVE_DIR='archive/'
+DATE=$(date +%Y%m%d)
+TIME=$(date +%H%M%S)
+ARCHIVE_FILE="${ARCHIVE_DIR}logs_archive_${DATE}_${TIME}.tar.gz"
 
 # Colors for error messages
 RED='\033[0;31m'
@@ -35,11 +38,6 @@ elif [[ "${#}" -eq 1 ]]
 then
   LOG_DIR="${1}"
 fi
-
-# Add date and time to an archive file name
-DATE=$(date +%Y%m%d)
-TIME=$(date +%H%M%S)
-ARCHIVE_FILE="${ARCHIVE_DIR}logs_archive_${DATE}_${TIME}.tar.gz"
 
 # Check if provided parameter exists and is a directory
 if [[ -d "${LOG_DIR}" ]]
