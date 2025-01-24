@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # This script archives logs
 # By compressing them and storing them in a new directory
 
@@ -20,26 +20,26 @@ usage() {
   exit 1
 }
 
-error_only_one_param() {
- echo -e "${RED}Please provide up to one parameter${NC}"
+error_only_one_arg() {
+ echo -e "${RED}Please provide up to one argument${NC}"
  usage
 }
 
 error_not_a_dir() {
-  echo -e "${RED}Provided parameter is not a directory or does not exist${NC}"
+  echo -e "${RED}Provided argument is not a directory or does not exist${NC}"
   usage
 }
 
 # Check if user provided directory for archivization
 if [[ "${#}" -gt 1 ]]
 then
-  error_only_one_param
+  error_only_one_arg
 elif [[ "${#}" -eq 1 ]]
 then
   LOG_DIR="${1}"
 fi
 
-# Check if provided parameter exists and is a directory
+# Check if provided argument exists and is a directory
 if [[ -d "${LOG_DIR}" ]]
 then
   # Check if ARCHIVE_DIR exists
