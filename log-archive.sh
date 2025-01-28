@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # This script archives logs
 # By compressing them and storing them in a new directory
 
