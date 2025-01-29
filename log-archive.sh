@@ -7,7 +7,7 @@ LOG_DIR='/var/log/'
 ARCHIVE_DIR='./archive/'
 DATE=$(date +%Y%m%d)
 TIME=$(date +%H%M%S)
-ARCHIVE_FILE="${ARCHIVE_DIR}logs_archive_${DATE}_${TIME}.tar.gz"
+ARCHIVE_FILE="logs_archive_${DATE}_${TIME}.tar.gz"
 
 # Colors for error messages
 RED='\033[0;31m'
@@ -21,14 +21,21 @@ usage() {
 }
 
 error_only_one_param() {
- echo -e "${RED}Please provide up to one parameter${NC}"
+ echo -e "${RED}Please provide up to one parameter${NC}" >&2
  usage
 }
 
 error_not_a_dir() {
-  echo -e "${RED}Provided parameter is not a directory or does not exist${NC}"
+  echo -e "${RED}Provided parameter is not a directory or does not exist${NC}" >&2
   usage
 }
+
+# Check if script was run with sudo privliges
+if [[ "${UID}" -ne 0 ]]
+then
+  echo "Pleas run with sudo or as a root" >&2
+  exit 1
+fi
 
 # Check if user provided directory for archivization
 if [[ "${#}" -gt 1 ]]
@@ -47,7 +54,15 @@ then
   then
     mkdir ${ARCHIVE_DIR}
   fi
-    tar -zcf ${ARCHIVE_FILE} ${LOG_DIR} &> /dev/null
+    tar -zcf ${ARCHIVE_DIR}${ARCHIVE_FILE} ${LOG_DIR} &> /dev/null
+    
+    # Check to see if the userdel command succeeded
+    if [[ "${?}" -ne 0 ]]
+    then
+      echo -e "${RED}The ${LOG_DIR} was NOT archived${NC}" >&2
+      exit 1
+      fi
+    echo "The ${LOG_DIR} was archived"
 else
   error_not_a_dir
 fi
