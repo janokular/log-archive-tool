@@ -56,7 +56,7 @@ then
   fi
     tar -zcf ${ARCHIVE_DIR}${ARCHIVE_FILE} ${LOG_DIR} &> /dev/null
     
-    # Check to see if the userdel command succeeded
+    # Check to see if the tar command succeeded
     if [[ "${?}" -ne 0 ]]
     then
       echo -e "${RED}The ${LOG_DIR} was NOT archived${NC}" >&2
