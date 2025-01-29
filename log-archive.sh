@@ -62,7 +62,7 @@ then
       echo -e "${RED}The ${LOG_DIR} was NOT archived${NC}" >&2
       exit 1
       fi
-    echo "The ${LOG_DIR} was archived"
+    echo "The ${LOG_DIR} was archived as a ${ARCHIVE_FILE}"
 else
   error_not_a_dir
 fi
