@@ -33,7 +33,7 @@ error_not_a_dir() {
 # Check if script was run with sudo privliges
 if [[ "${UID}" -ne 0 ]]
 then
-  echo "Pleas run with sudo or as a root" >&2
+  echo -e "${RED}Pleas run with sudo or as a root${NC}" >&2
   exit 1
 fi
 
