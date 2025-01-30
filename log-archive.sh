@@ -16,7 +16,7 @@ NC='\033[0m'
 usage() {
   echo "Usage: ${0} [LOG_DIR]"
   echo "Archive logs from provided directory"
-  echo "If no directory is provided archive /var/log/"
+  echo "If no directory is provided archive ${LOG_DIR}"
   exit 1
 }
 
