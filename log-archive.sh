@@ -3,8 +3,8 @@
 # This script archives logs
 # By compressing them and storing them in a new directory
 
-LOG_DIR='/var/log/'
-ARCHIVE_DIR='./archive/'
+LOG_DIR='/var/log'
+ARCHIVE_DIR='./archive'
 DATE=$(date +%Y%m%d)
 TIME=$(date +%H%M%S)
 ARCHIVE_FILE="logs_archive_${DATE}_${TIME}.tar.gz"
@@ -54,7 +54,7 @@ then
   then
     mkdir ${ARCHIVE_DIR}
   fi
-    tar -zcf ${ARCHIVE_DIR}${ARCHIVE_FILE} ${LOG_DIR} &> /dev/null
+    tar -zcf ${ARCHIVE_DIR}/${ARCHIVE_FILE} ${LOG_DIR} &> /dev/null
     
     # Check to see if the tar command succeeded
     if [[ "${?}" -ne 0 ]]
