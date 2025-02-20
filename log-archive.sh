@@ -19,7 +19,7 @@ usage() {
   exit 1
 }
 
-# Check if script was run with sudo privliges
+# Check if script was run with sudo privileges
 if [[ "${UID}" -ne 0 ]]
 then
   echo -e "${RED}Please run with sudo or as a root${NC}" >&2
