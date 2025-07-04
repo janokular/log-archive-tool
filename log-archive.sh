@@ -54,6 +54,5 @@ then
   exit 1
 else
   echo "The ${LOG_DIR} was archived as a ${ARCHIVE_FILE}"
+  exit 0
 fi
-
-exit 0
